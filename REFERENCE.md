@@ -283,7 +283,7 @@ Alias of `Struct[{
 
 type to allow an array of ip addresses
 
-Alias of `Array[String]`
+Alias of `Array[Stdlib::IP::Address]`
 
 ### IPSet::Set::File_URL
 
@@ -301,7 +301,7 @@ Alias of `Pattern[/^puppet:\/\//]`
 
 different datatypes that provides prefixes for the actual ipset
 
-Alias of `Variant[IPSet::Set::Array, IPSet::Set::Puppet_URL, IPSet::Set::File_URL, String]`
+Alias of `Variant[IPSet::Set::Array, IPSet::Set::Puppet_URL, IPSet::Set::File_URL, Stdlib::IP::Address]`
 
 ### IPSet::Type
 

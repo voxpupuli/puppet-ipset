@@ -54,7 +54,7 @@ This pattern is practical when generating the IP set entries using a template.
 ```puppet
 ipset { 'foo':
   ensure => present,
-  set    => "1.2.3.4\n5.6.7.8",
+  set    => "1.2.3.4",
   type   => 'hash:ip',
 }
 ```
