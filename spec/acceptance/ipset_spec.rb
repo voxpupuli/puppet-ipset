@@ -13,12 +13,32 @@ describe 'ipset class' do
       it { is_expected.to be_enabled }
     end
   end
+
   context 'with a basic ipset' do
     it 'works idempotently with no errors' do
       pp = <<-EOS
       include ipset
       ipset::set{'basic-set':
         set  => ['10.0.0.1', '10.0.0.2', '10.0.0.42'],
+        type => 'hash:net',
+        }
+      EOS
+      # Run it twice and test for idempotency
+      apply_manifest(pp, catch_failures: true)
+      apply_manifest(pp, catch_changes: true)
+    end
+
+    describe command('ipset list basic-set') do
+      its(:stdout) { is_expected.to match %r{.*basic-set.*Type: hash:net.*10\.0\.0\.2.*}m }
+    end
+  end
+
+  context 'with a nested array' do
+    it 'handles nested arrays with no errors' do
+      pp = <<-EOS
+      include ipset
+      ipset::set{'nested-set':
+        set  => ['10.0.0.1', ['10.0.0.2', '10.0.0.42']],
         type => 'hash:net',
         }
       EOS
