@@ -31,7 +31,7 @@
 #   }
 #
 # @example setup multiple ipsets based on a hiera hash with multiple arrays and multiple IPv4/IPv6 prefixes. Use the voxpupuli/ferm module to create suitable iptables rules.
-#   $ip_ranges = lookup('ip_net_vlans').flatten.unique
+#   $ip_ranges = lookup('ip_net_vlans')
 #   $ip_ranges_ipv4 = $ip_ranges.filter |$ip_range| { $ip_range =~ Stdlib::IP::Address::V4 }
 #   $ip_ranges_ipv6 = $ip_ranges.filter |$ip_range| { $ip_range =~ Stdlib::IP::Address::V6 }
 #
@@ -108,7 +108,7 @@ define ipset::set (
     # content
     case $set {
       IPSet::Set::Array: { # lint:ignore:unquoted_string_in_case
-        $new_set = join($set, "\n")
+        $new_set = join(flatten($set).unique, "\n")
         # create file with ipset, one record per line
         file { "${config_path}/${title}.set":
           ensure  => file,
