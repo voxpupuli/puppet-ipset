@@ -119,11 +119,11 @@ function ipset_insync_common() {
   local pfx=$2
 
 
-  # compare configured and runtime config
+  # compare configured and runtime config, ignoring hashsize, initval and bucketsize parameters
   tf=$(mktemp)
-  diff \
-    <(get_ipset_dump ${id} | grep ^${pfx} | sed 's/hashsize [0-9]\+ //g') \
-    <(construct_ipset_dump ${id} | grep ^${pfx} | sed 's/hashsize [0-9]\+ //g') \
+  diff -w \
+    <(get_ipset_dump ${id} | grep ^${pfx} | sed -e 's/hashsize [0-9]\+ //g' -e 's/initval 0x[0-9a-f]\+//g' -e 's/bucketsize [0-9]\+ //g') \
+    <(construct_ipset_dump ${id} | grep ^${pfx} | sed -e 's/hashsize [0-9]\+ //g' -e 's/initval 0x[0-9a-f]\+//g' -e 's/bucketsize [0-9]\+ //g') \
     > ${tf}
   local rv=$?
 
