@@ -74,7 +74,7 @@ function construct_ipset_dump() {
         grep -v '^[[:space:]]*$' | \
         sed -re 's@^[[:space:]]*@@' | \
         sed -re 's@[[:space:]]*$@@' | \
-        sed -re 's@/((32)|(128))$@@' | \
+        sed -re 's@((\.[0-9]+)/32|/128)$@\2@' | \
         sed -re 's@[[:space:]]*#.*$@@' | \
         sed -re "s/(.*)/add ${alias} \\1/" | \
         LC_ALL=C sort --unique
