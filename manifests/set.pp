@@ -82,10 +82,17 @@ define ipset::set (
 
   $config_path = $ipset::config_path
 
-  $default_options = {
-    'family'   => 'inet',
-    'hashsize' => '1024',
-    'maxelem'  => '65536',
+  case $type {
+    default: {
+      $default_options = {}
+    }
+    'hash:ip': {
+      $default_options = {
+        'family'   => 'inet',
+        'hashsize' => '1024',
+        'maxelem'  => '65536',
+      }
+    }
   }
 
   $actual_options = merge($default_options, $options)
