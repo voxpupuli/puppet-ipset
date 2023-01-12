@@ -6,4 +6,5 @@ type IPSet::Settype = Variant[
   IPSet::Set::Puppet_URL,
   IPSet::Set::File_URL,
   String,
+  Integer,
 ]
