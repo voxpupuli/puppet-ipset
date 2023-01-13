@@ -86,7 +86,7 @@ define ipset::set (
     default: {
       $default_options = {}
     }
-    'hash:ip': {
+    'hash:ip', 'hash:net': {
       $default_options = {
         'family'   => 'inet',
         'hashsize' => '1024',
