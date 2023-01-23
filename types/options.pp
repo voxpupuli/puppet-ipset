@@ -9,4 +9,6 @@ type IPSet::Options = Struct[{
     Optional[maxelem]  => Integer[128],
     Optional[netmask]  => IP::Address,
     Optional[timeout]  => Integer[1],
+    Optional[range]    => String,
+    Optional[comment]  => String,
 }]

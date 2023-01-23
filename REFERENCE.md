@@ -310,6 +310,8 @@ Struct[{
     Optional[maxelem]  => Integer[128],
     Optional[netmask]  => IP::Address,
     Optional[timeout]  => Integer[1],
+    Optional[range]    => String,
+    Optional[comment]  => String,
 }]
 ```
 
@@ -364,6 +366,6 @@ type to allow all different hash setups for ipsets
 Alias of
 
 ```puppet
-Enum['hash:ip', 'hash:ip,port', 'hash:ip,port,ip', 'hash:ip,port,net', 'hash:ip,mark', 'hash:net', 'hash:net,net', 'hash:net,iface', 'hash:net,port', 'hash:net,port,net', 'hash:mac']
+Enum['bitmap:ip','bitmap:ip,mac','bitmap:port','hash:ip','hash:mac','hash:ip,mac','hash:net','hash:net,net','hash:ip,port','hash:net,port','hash:ip,port,ip','hash:ip,port,net','hash:ip,mark','hash:net,port,net','hash:net,iface','list:set']
 ```
 
