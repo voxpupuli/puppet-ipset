@@ -65,7 +65,7 @@ describe 'ipset' do
                 }
               },
               'port-set' => {
-                'set' => "[5000, 5001, 5999]",
+                'set' => '[5000, 5001, 5999]',
                 'type' => 'bitmap:port',
                 'options' => {
                   'range' => '5000-6000'
@@ -91,7 +91,7 @@ describe 'ipset' do
             )
           expect(subject).to contain_ipset__set('port-set').\
             with(
-              'set' => "[5000, 5001, 5999]",
+              'set' => '[5000, 5001, 5999]',
               'type' => 'bitmap:port',
               'options' => {
                 'range' => '5000-6000'
