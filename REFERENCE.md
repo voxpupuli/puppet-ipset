@@ -10,17 +10,17 @@
 
 ### Defined types
 
-* [`ipset::set`](#ipsetset): Declare an IP Set.
-* [`ipset::unmanaged`](#ipsetunmanaged): Declare an IP set, without managing its content.  Useful when you have a dynamic process that generates an IP set content, but still want to 
+* [`ipset::set`](#ipset--set): Declare an IP Set.
+* [`ipset::unmanaged`](#ipset--unmanaged): Declare an IP set, without managing its content.  Useful when you have a dynamic process that generates an IP set content, but still want to 
 
 ### Data types
 
-* [`IPSet::Options`](#ipsetoptions): list of options you can configure on an ipset
-* [`IPSet::Set::Array`](#ipsetsetarray): type to allow an array of ip addresses
-* [`IPSet::Set::File_URL`](#ipsetsetfile_url): type to allow a static file on the target system as source for ipsets
-* [`IPSet::Set::Puppet_URL`](#ipsetsetpuppet_url): type to allow a file on the puppetserver as source for ip addresses for ipsets
-* [`IPSet::Settype`](#ipsetsettype): different datatypes that provides prefixes for the actual ipset
-* [`IPSet::Type`](#ipsettype): type to allow all different hash setups for ipsets
+* [`IPSet::Options`](#IPSet--Options): list of options you can configure on an ipset
+* [`IPSet::Set::Array`](#IPSet--Set--Array): type to allow an array of ip addresses
+* [`IPSet::Set::File_URL`](#IPSet--Set--File_URL): type to allow a static file on the target system as source for ipsets
+* [`IPSet::Set::Puppet_URL`](#IPSet--Set--Puppet_URL): type to allow a file on the puppetserver as source for ip addresses for ipsets
+* [`IPSet::Settype`](#IPSet--Settype): different datatypes that provides prefixes for the actual ipset
+* [`IPSet::Type`](#IPSet--Type): type to allow all different hash setups for ipsets
 
 ## Classes
 
@@ -32,60 +32,60 @@ module to install the ipset tooling and to manage individual ipsets
 
 The following parameters are available in the `ipset` class:
 
-* [`packages`](#packages)
-* [`service`](#service)
-* [`service_ensure`](#service_ensure)
-* [`enable`](#enable)
-* [`firewall_service`](#firewall_service)
-* [`package_ensure`](#package_ensure)
-* [`config_path`](#config_path)
-* [`sets`](#sets)
+* [`packages`](#-ipset--packages)
+* [`service`](#-ipset--service)
+* [`service_ensure`](#-ipset--service_ensure)
+* [`enable`](#-ipset--enable)
+* [`firewall_service`](#-ipset--firewall_service)
+* [`package_ensure`](#-ipset--package_ensure)
+* [`config_path`](#-ipset--config_path)
+* [`sets`](#-ipset--sets)
 
-##### <a name="packages"></a>`packages`
+##### <a name="-ipset--packages"></a>`packages`
 
 Data type: `Array[String[1]]`
 
 The name of the package we want to install
 
-##### <a name="service"></a>`service`
+##### <a name="-ipset--service"></a>`service`
 
 Data type: `String[1]`
 
 The name of the service that we're going to manage
 
-##### <a name="service_ensure"></a>`service_ensure`
+##### <a name="-ipset--service_ensure"></a>`service_ensure`
 
 Data type: `Boolean`
 
 Desired state of the service. If true, the service will be running. If false, the service will be stopped
 
-##### <a name="enable"></a>`enable`
+##### <a name="-ipset--enable"></a>`enable`
 
 Data type: `Boolean`
 
 Boolean to decide if we want to have the service in autostart or not
 
-##### <a name="firewall_service"></a>`firewall_service`
+##### <a name="-ipset--firewall_service"></a>`firewall_service`
 
 Data type: `Optional[Pattern[/\.service$/]]`
 
 An optional service name. if provided, the ipsets will be configured before this. So your firewall will depend on the chains. The name should end with `.service`. This is only supported on systemd-based Operating Systems
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="package_ensure"></a>`package_ensure`
+##### <a name="-ipset--package_ensure"></a>`package_ensure`
 
 Data type: `Enum['present', 'absent', 'latest']`
 
 ensure parameter for the ipset package resource
 
-##### <a name="config_path"></a>`config_path`
+##### <a name="-ipset--config_path"></a>`config_path`
 
 Data type: `Stdlib::Absolutepath`
 
 path to the directory for the ipsets
 
-##### <a name="sets"></a>`sets`
+##### <a name="-ipset--sets"></a>`sets`
 
 Data type: `Hash`
 
@@ -95,7 +95,7 @@ Default value: `{}`
 
 ## Defined types
 
-### <a name="ipsetset"></a>`ipset::set`
+### <a name="ipset--set"></a>`ipset::set`
 
 Declare an IP Set.
 
@@ -175,20 +175,20 @@ ferm::ipset{'INPUT':
 
 The following parameters are available in the `ipset::set` defined type:
 
-* [`set`](#set)
-* [`ensure`](#ensure)
-* [`type`](#type)
-* [`options`](#options)
-* [`ignore_contents`](#ignore_contents)
-* [`keep_in_sync`](#keep_in_sync)
+* [`set`](#-ipset--set--set)
+* [`ensure`](#-ipset--set--ensure)
+* [`type`](#-ipset--set--type)
+* [`options`](#-ipset--set--options)
+* [`ignore_contents`](#-ipset--set--ignore_contents)
+* [`keep_in_sync`](#-ipset--set--keep_in_sync)
 
-##### <a name="set"></a>`set`
+##### <a name="-ipset--set--set"></a>`set`
 
 Data type: `IPSet::Settype`
 
 IP set content or source.
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-ipset--set--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -196,7 +196,7 @@ Should the IP set be created or removed ?
 
 Default value: `'present'`
 
-##### <a name="type"></a>`type`
+##### <a name="-ipset--set--type"></a>`type`
 
 Data type: `IPSet::Type`
 
@@ -204,7 +204,7 @@ Type of IP set.
 
 Default value: `'hash:ip'`
 
-##### <a name="options"></a>`options`
+##### <a name="-ipset--set--options"></a>`options`
 
 Data type: `IPSet::Options`
 
@@ -212,25 +212,25 @@ IP set options.
 
 Default value: `{}`
 
-##### <a name="ignore_contents"></a>`ignore_contents`
+##### <a name="-ipset--set--ignore_contents"></a>`ignore_contents`
 
 Data type: `Boolean`
 
 If ``true``, only the IP set declaration will be
 managed, but not its content.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="keep_in_sync"></a>`keep_in_sync`
+##### <a name="-ipset--set--keep_in_sync"></a>`keep_in_sync`
 
 Data type: `Boolean`
 
 If ``true``, Puppet will update the IP set in the kernel
 memory. If ``false``, it will only update the IP sets on the filesystem.
 
-Default value: ``true``
+Default value: `true`
 
-### <a name="ipsetunmanaged"></a>`ipset::unmanaged`
+### <a name="ipset--unmanaged"></a>`ipset::unmanaged`
 
 Declare an IP set, without managing its content.
 
@@ -254,12 +254,12 @@ ipset::unmanaged { 'unmanaged-ipset-name': }
 
 The following parameters are available in the `ipset::unmanaged` defined type:
 
-* [`ensure`](#ensure)
-* [`type`](#type)
-* [`options`](#options)
-* [`keep_in_sync`](#keep_in_sync)
+* [`ensure`](#-ipset--unmanaged--ensure)
+* [`type`](#-ipset--unmanaged--type)
+* [`options`](#-ipset--unmanaged--options)
+* [`keep_in_sync`](#-ipset--unmanaged--keep_in_sync)
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-ipset--unmanaged--ensure"></a>`ensure`
 
 Data type: `Enum['present', 'absent']`
 
@@ -267,7 +267,7 @@ Should the IP set be created or removed ?
 
 Default value: `'present'`
 
-##### <a name="type"></a>`type`
+##### <a name="-ipset--unmanaged--type"></a>`type`
 
 Data type: `IPSet::Type`
 
@@ -275,7 +275,7 @@ Type of IP set.
 
 Default value: `'hash:ip'`
 
-##### <a name="options"></a>`options`
+##### <a name="-ipset--unmanaged--options"></a>`options`
 
 Data type: `IPSet::Options`
 
@@ -283,18 +283,18 @@ IP set options.
 
 Default value: `{}`
 
-##### <a name="keep_in_sync"></a>`keep_in_sync`
+##### <a name="-ipset--unmanaged--keep_in_sync"></a>`keep_in_sync`
 
 Data type: `Boolean`
 
 If ``true``, Puppet will update the IP set in the kernel
 memory. If ``false``, it will only update the IP sets on the filesystem.
 
-Default value: ``true``
+Default value: `true`
 
 ## Data types
 
-### <a name="ipsetoptions"></a>`IPSet::Options`
+### <a name="IPSet--Options"></a>`IPSet::Options`
 
 list of options you can configure on an ipset
 
@@ -313,47 +313,31 @@ Struct[{
 }]
 ```
 
-### <a name="ipsetsetarray"></a>`IPSet::Set::Array`
+### <a name="IPSet--Set--Array"></a>`IPSet::Set::Array`
 
 type to allow an array of ip addresses
 
-Alias of
+Alias of `Array[String]`
 
-```puppet
-Array[String]
-```
-
-### <a name="ipsetsetfile_url"></a>`IPSet::Set::File_URL`
+### <a name="IPSet--Set--File_URL"></a>`IPSet::Set::File_URL`
 
 type to allow a static file on the target system as source for ipsets
 
-Alias of
+Alias of `Pattern[/^file:\/\/\//]`
 
-```puppet
-Pattern[/^file:\/\/\//]
-```
-
-### <a name="ipsetsetpuppet_url"></a>`IPSet::Set::Puppet_URL`
+### <a name="IPSet--Set--Puppet_URL"></a>`IPSet::Set::Puppet_URL`
 
 type to allow a file on the puppetserver as source for ip addresses for ipsets
 
-Alias of
+Alias of `Pattern[/^puppet:\/\//]`
 
-```puppet
-Pattern[/^puppet:\/\//]
-```
-
-### <a name="ipsetsettype"></a>`IPSet::Settype`
+### <a name="IPSet--Settype"></a>`IPSet::Settype`
 
 different datatypes that provides prefixes for the actual ipset
 
-Alias of
+Alias of `Variant[IPSet::Set::Array, IPSet::Set::Puppet_URL, IPSet::Set::File_URL, String]`
 
-```puppet
-Variant[IPSet::Set::Array, IPSet::Set::Puppet_URL, IPSet::Set::File_URL, String]
-```
-
-### <a name="ipsettype"></a>`IPSet::Type`
+### <a name="IPSet--Type"></a>`IPSet::Type`
 
 type to allow all different hash setups for ipsets
 
@@ -361,9 +345,5 @@ type to allow all different hash setups for ipsets
   * http://ipset.netfilter.org/ipset.man.html#lbAW
   * documentation for all different hash options
 
-Alias of
-
-```puppet
-Enum['hash:ip', 'hash:ip,port', 'hash:ip,port,ip', 'hash:ip,port,net', 'hash:ip,mark', 'hash:net', 'hash:net,net', 'hash:net,iface', 'hash:net,port', 'hash:net,port,net', 'hash:mac']
-```
+Alias of `Enum['hash:ip', 'hash:ip,port', 'hash:ip,port,ip', 'hash:ip,port,net', 'hash:ip,mark', 'hash:net', 'hash:net,net', 'hash:net,iface', 'hash:net,port', 'hash:net,port,net', 'hash:mac']`
 
