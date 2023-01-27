@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.0.0](https://github.com/voxpupuli/puppet-ipset/tree/v3.0.0) (2023-01-27)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-ipset/compare/v2.1.0...v3.0.0)
+
+**Breaking changes:**
+
+- Drop Debian 9/Ubuntu 16.04 support [\#62](https://github.com/voxpupuli/puppet-ipset/pull/62) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- bump puppet/systemd to \< 5.0.0 [\#77](https://github.com/voxpupuli/puppet-ipset/pull/77) ([jhoblitt](https://github.com/jhoblitt))
+- Add Debian 11 and Ubuntu 20.04 [\#76](https://github.com/voxpupuli/puppet-ipset/pull/76) ([elfranne](https://github.com/elfranne))
+
+**Fixed bugs:**
+
+- subnet 32 should not be stripped in ipset\_sync [\#65](https://github.com/voxpupuli/puppet-ipset/issues/65)
+- Potential for systemd dependency cycles [\#63](https://github.com/voxpupuli/puppet-ipset/issues/63)
+- /32 is incorrectly stripped from IPv6 networks [\#30](https://github.com/voxpupuli/puppet-ipset/issues/30)
+- Add dependency on debian iptables service [\#73](https://github.com/voxpupuli/puppet-ipset/pull/73) ([oliparcol](https://github.com/oliparcol))
+- Enable CentOS/RHEL 8 support, stop triggering sync exec when nothing changes [\#71](https://github.com/voxpupuli/puppet-ipset/pull/71) ([WoutResseler](https://github.com/WoutResseler))
+- update ipset\_sync a bug with ipv6 [\#66](https://github.com/voxpupuli/puppet-ipset/pull/66) ([muncjack](https://github.com/muncjack))
+- Override DefaultDependencies on ipset service unit [\#64](https://github.com/voxpupuli/puppet-ipset/pull/64) ([sagepe](https://github.com/sagepe))
+
 ## [v2.1.0](https://github.com/voxpupuli/puppet-ipset/tree/v2.1.0) (2021-12-30)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-ipset/compare/v2.0.0...v2.1.0)
