@@ -34,7 +34,7 @@ def check_exec_sync(name, attributes)
     expect(subject).to contain_exec("sync_ipset_#{name}").
       with({
         path: ['/sbin', '/usr/sbin', '/bin', '/usr/bin', '/usr/local/bin', '/usr/local/sbin'],
-        require: 'Package[ipset]'
+        require: ['Package[ipset]', 'File[/usr/local/bin/ipset_sync]']
       }.merge(attributes)).
       that_subscribes_to("File[/etc/sysconfig/ipset.d/#{name}.set]")
   end

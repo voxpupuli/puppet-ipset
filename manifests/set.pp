@@ -171,7 +171,7 @@ define ipset::set (
       command     => "ipset_sync -c '${config_path}'    -i ${title}${ignore_contents_opt}",
       # only when difference with in-kernel set is detected
       unless      => "ipset_sync -c '${config_path}' -d -i ${title}${ignore_contents_opt}",
-      require     => Package['ipset'],
+      require     => [Package['ipset'], File['/usr/local/bin/ipset_sync']],
       refreshonly => true,
     }
 
