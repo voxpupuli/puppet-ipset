@@ -166,12 +166,13 @@ define ipset::set (
 
     # sync if needed by helper script
     exec { "sync_ipset_${title}":
-      path    => ['/sbin', '/usr/sbin', '/bin', '/usr/bin', '/usr/local/bin', '/usr/local/sbin'],
+      path        => ['/sbin', '/usr/sbin', '/bin', '/usr/bin', '/usr/local/bin', '/usr/local/sbin'],
       # use helper script to do the sync
-      command => "ipset_sync -c '${config_path}'    -i ${title}${ignore_contents_opt}",
+      command     => "ipset_sync -c '${config_path}'    -i ${title}${ignore_contents_opt}",
       # only when difference with in-kernel set is detected
-      unless  => "ipset_sync -c '${config_path}' -d -i ${title}${ignore_contents_opt}",
-      require => Package['ipset'],
+      unless      => "ipset_sync -c '${config_path}' -d -i ${title}${ignore_contents_opt}",
+      require     => [Package['ipset'], File['/usr/local/bin/ipset_sync']],
+      refreshonly => true,
     }
 
     if $keep_in_sync {
