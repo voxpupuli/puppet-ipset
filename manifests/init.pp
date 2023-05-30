@@ -41,6 +41,8 @@ class ipset (
   # create the config directory
   file { $config_path:
     ensure => 'directory',
+    recurse => true,
+    purge   => true,
   }
 
   # setup the helper scripts
