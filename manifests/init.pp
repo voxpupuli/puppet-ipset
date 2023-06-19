@@ -21,6 +21,9 @@
 # @param config_path
 #   path to the directory for the ipsets
 #
+# @param purge_config_dir
+#   Wether to purge the config directory for the ipsets or not
+#
 # @param sets
 #   Hash Hash of 'ipset::set' resources
 #
@@ -31,6 +34,7 @@ class ipset (
   Boolean $enable,
   Enum['present', 'absent', 'latest'] $package_ensure,
   Stdlib::Absolutepath $config_path,
+  Boolean $purge_config_dir = false,
   Optional[Pattern[/\.service$/]] $firewall_service = undef,
   Hash $sets = {},
 ) {
@@ -42,7 +46,7 @@ class ipset (
   file { $config_path:
     ensure  => 'directory',
     recurse => true,
-    purge   => true,
+    purge   => $purge_config_dir,
   }
 
   # setup the helper scripts
