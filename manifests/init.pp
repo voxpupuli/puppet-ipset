@@ -22,7 +22,7 @@
 #   path to the directory for the ipsets
 #
 # @param purge_config_dir
-#   Wether to purge the config directory for the ipsets or not
+#   Whether to purge the config directory for the ipsets or not
 #
 # @param sets
 #   Hash Hash of 'ipset::set' resources
