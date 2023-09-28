@@ -74,7 +74,7 @@ describe 'ipset' do
               'set' => "['10.0.0.1', '10.0.0.2', '10.0.0.42']",
               'type' => 'hash:net'
             )
-          expect(subject).to contain_ipset__set('basic-set-v6').\
+          expect(subject).to contain_ipset__set('basic-set-v6'). \
             with(
               'set' => "['fc00::1/128', 'fc00::2/128', 'fc00::2/128']",
               'type' => 'hash:net',
