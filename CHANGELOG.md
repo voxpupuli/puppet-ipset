@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.0.0](https://github.com/voxpupuli/puppet-ipset/tree/v4.0.0) (2023-10-20)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-ipset/compare/v3.0.0...v4.0.0)
+
+**Breaking changes:**
+
+- Drop OracleLinux 7, Add EL9/Alma/Rocky support [\#90](https://github.com/voxpupuli/puppet-ipset/pull/90) ([bastelfreak](https://github.com/bastelfreak))
+- Drop Puppet 6 support [\#83](https://github.com/voxpupuli/puppet-ipset/pull/83) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Enable creating `ipset::set` resources via Hiera [\#41](https://github.com/voxpupuli/puppet-ipset/issues/41)
+- puppet/systemd: Allow 5.x & 6.x [\#89](https://github.com/voxpupuli/puppet-ipset/pull/89) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/stdlib: Allow 9.x [\#87](https://github.com/voxpupuli/puppet-ipset/pull/87) ([bastelfreak](https://github.com/bastelfreak))
+- this is a fix for newer kernel and resolves \#68 [\#81](https://github.com/voxpupuli/puppet-ipset/pull/81) ([muncjack](https://github.com/muncjack))
+
+**Fixed bugs:**
+
+- make the exec depend on the file it is execing [\#80](https://github.com/voxpupuli/puppet-ipset/pull/80) ([spakka](https://github.com/spakka))
+
 ## [v3.0.0](https://github.com/voxpupuli/puppet-ipset/tree/v3.0.0) (2023-01-27)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-ipset/compare/v2.1.0...v3.0.0)
