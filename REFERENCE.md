@@ -39,6 +39,7 @@ The following parameters are available in the `ipset` class:
 * [`firewall_service`](#-ipset--firewall_service)
 * [`package_ensure`](#-ipset--package_ensure)
 * [`config_path`](#-ipset--config_path)
+* [`purge_config_dir`](#-ipset--purge_config_dir)
 * [`sets`](#-ipset--sets)
 
 ##### <a name="-ipset--packages"></a>`packages`
@@ -84,6 +85,14 @@ ensure parameter for the ipset package resource
 Data type: `Stdlib::Absolutepath`
 
 path to the directory for the ipsets
+
+##### <a name="-ipset--purge_config_dir"></a>`purge_config_dir`
+
+Data type: `Boolean`
+
+Whether to purge the config directory for the ipsets or not
+
+Default value: `false`
 
 ##### <a name="-ipset--sets"></a>`sets`
 
