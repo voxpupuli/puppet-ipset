@@ -1,6 +1,6 @@
 {
   "name": "puppet-ipset",
-  "version": "4.3.0",
+  "version": "4.3.1-rc0",
   "author": "Vox Pupuli",
   "summary": "Linux ipsets management",
   "license": "AGPL-3.0",
