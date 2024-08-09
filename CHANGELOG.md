@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v4.3.0](https://github.com/voxpupuli/puppet-ipset/tree/v4.3.0) (2024-08-09)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-ipset/compare/v4.2.0...v4.3.0)
+
+**Merged pull requests:**
+
+- update puppet-systemd upper bound to 8.0.0 [\#101](https://github.com/voxpupuli/puppet-ipset/pull/101) ([TheMeier](https://github.com/TheMeier))
+
 ## [v4.2.0](https://github.com/voxpupuli/puppet-ipset/tree/v4.2.0) (2024-02-09)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-ipset/compare/v4.1.0...v4.2.0)
