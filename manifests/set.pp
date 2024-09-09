@@ -88,7 +88,7 @@ define ipset::set (
     'maxelem'  => '65536',
   }
 
-  $actual_options = merge($default_options, $options)
+  $actual_options = stdlib::merge($default_options, $options)
 
   if $ensure == 'present' {
     # assert "present" target
