@@ -183,7 +183,7 @@ define ipset::set (
 
     # do not contain config files
     file { ["${config_path}/${title}.set", "${config_path}/${title}.hdr"]:
-      ensure  => absent,
+      ensure => absent,
     }
 
     # clear ipset from kernel
