@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v5.0.0](https://github.com/voxpupuli/puppet-ipset/tree/v5.0.0) (2025-04-17)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-ipset/compare/v4.3.0...v5.0.0)
+
+**Breaking changes:**
+
+- drop support for Ubuntu 18.04 -- EOL [\#115](https://github.com/voxpupuli/puppet-ipset/pull/115) ([jhoblitt](https://github.com/jhoblitt))
+- drop support for Debian 10 -- EOL [\#114](https://github.com/voxpupuli/puppet-ipset/pull/114) ([jhoblitt](https://github.com/jhoblitt))
+- drop support for CentOS 8 -- EOL [\#113](https://github.com/voxpupuli/puppet-ipset/pull/113) ([jhoblitt](https://github.com/jhoblitt))
+- Drop EoL EL7 support [\#106](https://github.com/voxpupuli/puppet-ipset/pull/106) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- metadata.json: Add OpenVox [\#112](https://github.com/voxpupuli/puppet-ipset/pull/112) ([jstraw](https://github.com/jstraw))
+- puppet/systemd: allow 8.x [\#108](https://github.com/voxpupuli/puppet-ipset/pull/108) ([jay7x](https://github.com/jay7x))
+- Replace merge\(\) with native Puppet code [\#107](https://github.com/voxpupuli/puppet-ipset/pull/107) ([bastelfreak](https://github.com/bastelfreak))
+- Update set.pp, merge deprecation fixed [\#105](https://github.com/voxpupuli/puppet-ipset/pull/105) ([petr-dittrich-ipf](https://github.com/petr-dittrich-ipf))
+
 ## [v4.3.0](https://github.com/voxpupuli/puppet-ipset/tree/v4.3.0) (2024-08-09)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-ipset/compare/v4.2.0...v4.3.0)
