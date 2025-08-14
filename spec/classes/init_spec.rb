@@ -70,6 +70,23 @@ describe 'ipset' do
             )
         end
       end
+
+      context 'when purge_config_dir => true' do
+        let(:params) do
+          {
+            enable: true,
+            package_ensure: 'present',
+            config_path: '/etc/ipset.d',
+            purge_config_dir: true,
+          }
+        end
+
+        it 'sets purge => true on the config directory' do
+          is_expected.to contain_file('/etc/ipset.d').with(
+            'purge' => true
+          )
+        end
+      end
     end
   end
 end
