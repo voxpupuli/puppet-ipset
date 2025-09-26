@@ -314,11 +314,11 @@ Alias of
 
 ```puppet
 Struct[{
-    Optional[family]   => Enum['inet', 'inet6'],
-    Optional[hashsize] => Integer[128],
-    Optional[maxelem]  => Integer[128],
-    Optional[netmask]  => Stdlib::IP::Address,
-    Optional[timeout]  => Integer[1],
+  Optional[family]   => Enum['inet', 'inet6'],
+  Optional[hashsize] => Integer[128],
+  Optional[maxelem]  => Integer[128],
+  Optional[netmask]  => Stdlib::IP::Address,
+  Optional[timeout]  => Integer[1],
 }]
 ```
 

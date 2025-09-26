@@ -72,8 +72,8 @@ class ipset (
         enable    => $enable,
         active    => $service_ensure,
         content   => epp("${module_name}/ipset.service.epp", {
-            'firewall_service' => $firewall_service,
-            'config_path'      => $config_path,
+          'firewall_service' => $firewall_service,
+          'config_path'      => $config_path,
         }),
         subscribe => [File['/usr/local/bin/ipset_init'], File['/usr/local/bin/ipset_sync']],
       }
