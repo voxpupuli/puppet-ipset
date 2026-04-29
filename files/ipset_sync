@@ -222,7 +222,7 @@ if ipset_exists ${set_id}; then
         exit 8
       fi
 
-      swap_alias="SWAP_${set_id}"
+      swap_alias=$(echo "${set_id}" | md5sum | head -c 31)
 
       # create a new set with expected content, to swap with old set
       import_ipset ${set_id} ${swap_alias}
