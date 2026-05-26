@@ -1,4 +1,4 @@
 #
-# @summary type to allow an array of ip addresses
+# @summary type to allow nested arrays of ip addresses
 #
-type IPSet::Set::Array = Array[String]
+type IPSet::Set::Array = Variant[Array, String[1]]
