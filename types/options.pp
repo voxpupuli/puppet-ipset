@@ -8,5 +8,5 @@ type IPSet::Options = Struct[{
   Optional[hashsize] => Integer[128],
   Optional[maxelem]  => Integer[128],
   Optional[netmask]  => Stdlib::IP::Address,
-  Optional[timeout]  => Integer[1],
+  Optional[timeout]  => Integer[0],
 }]
