@@ -50,6 +50,13 @@ describe 'ipset' do
                   'family' => 'inet6',
                 },
               },
+              'port-set' => {
+                'set' => '[5000, 5001, 5999]',
+                'type' => 'bitmap:port',
+                'options' => {
+                  'range' => '5000-6000',
+                },
+              },
             },
           }
         end
@@ -66,6 +73,14 @@ describe 'ipset' do
               'type' => 'hash:net',
               'options' => {
                 'family' => 'inet6',
+              },
+            )
+          expect(subject).to contain_ipset__set('port-set')
+            .with(
+              'set' => '[5000, 5001, 5999]',
+              'type' => 'bitmap:port',
+              'options' => {
+                'range' => '5000-6000',
               },
             )
         end
