@@ -56,4 +56,36 @@ describe 'ipset class' do
       its(:stdout) { is_expected.to match '' }
     end
   end
+
+  context 'ipsets headers atomic swap' do
+    it 'creates a set and references it in iptables' do
+      pp = <<-EOS
+      include ipset
+      ipset::set{'atomic-header-set':
+        set     => ['10.0.0.1', '10.0.0.2'],
+        type    => 'hash:net',
+        options => { 'maxelem' => 1000 },
+      }
+      EOS
+      apply_manifest(pp, catch_failures: true)
+      shell('iptables -A INPUT -m set --match-set atomic-header-set src -j ACCEPT')
+    end
+
+    it 'updates options while set is in use' do
+      pp = <<-EOS
+      include ipset
+      ipset::set{'atomic-header-set':
+        set     => ['10.0.0.1', '10.0.0.2'],
+        type    => 'hash:net',
+        options => { 'maxelem' => 1001 },
+      }
+      EOS
+      apply_manifest(pp, catch_failures: true)
+      apply_manifest(pp, catch_changes: true)
+    end
+
+    describe command('ipset list atomic-header-set') do
+      its(:stdout) { is_expected.to match %r{maxelem 1001} }
+    end
+  end
 end

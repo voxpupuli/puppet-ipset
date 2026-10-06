@@ -105,7 +105,8 @@ ipset::unmanaged { 'baz':
 Useful when you have a dynamic process that generates an IP set content,
 but still want to define and use it from Puppet.
 
-Warning: When changing IP set attributes (type, options) contents won't be kept, set will be recreated as empty.
+Warning: When changing IP set type, contents won't be kept, set will be recreated as empty.
+Changing other options (e.g. maxelem, hashsize) is handled via atomic swap, preserving contents even when the set is referenced by iptables rules.
 
 ## Reference
 

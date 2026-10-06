@@ -198,11 +198,31 @@ if ipset_exists ${set_id}; then
       exit 3
     fi
 
-    # drop the old one
-    ipset destroy ${set_id}
+    # attempt atomic swap to update ipsets options seamlessly without
+    # disrupting iptables rules referencing this set.
+    # atomic swap is only possible when set types are compatible,
+    # if the set type changes, it falls back to destroy + recreate.
+    swap_alias="SWAP_${set_id}"
+    import_ipset ${set_id} ${swap_alias} ${ignore_contents}
+    result=$?
 
-    # create it with content as expected
-    import_ipset ${set_id} ${set_id} ${ignore_contents}
+    if [ ${result} -eq 0 ]; then
+      # try atomic swap (works when set types are compatible)
+      if ipset swap ${swap_alias} ${set_id}; then
+        # swap succeeded, destroy the old set (now under swap_alias)
+        ipset destroy ${swap_alias}
+        exit 0
+      else
+        # swap failed, clean up temp set
+        ipset destroy ${swap_alias}
+        # fall back to destroy + recreate
+        ipset destroy ${set_id}
+        import_ipset ${set_id} ${set_id} ${ignore_contents}
+      fi
+    else
+      # import of temp set failed, clean up
+      ipset destroy ${swap_alias} 2>/dev/null
+    fi
   else
     # hdr is the same
 
