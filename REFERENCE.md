@@ -11,7 +11,7 @@
 ### Defined types
 
 * [`ipset::set`](#ipset--set): Declare an IP Set.
-* [`ipset::unmanaged`](#ipset--unmanaged): Declare an IP set, without managing its content.  Useful when you have a dynamic process that generates an IP set content, but still want to 
+* [`ipset::unmanaged`](#ipset--unmanaged): Declare an IP set, without managing its content.  Useful when you have a dynamic process that generates an IP set content, but still want to
 
 ### Data types
 
@@ -275,7 +275,7 @@ set will be recreated as empty.
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 ipset::unmanaged { 'unmanaged-ipset-name': }
@@ -377,4 +377,3 @@ type to allow all different hash setups for ipsets
   * documentation for all different hash options
 
 Alias of `Enum['hash:ip', 'hash:ip,port', 'hash:ip,port,ip', 'hash:ip,port,net', 'hash:ip,mark', 'hash:net', 'hash:net,net', 'hash:net,iface', 'hash:net,port', 'hash:net,port,net', 'hash:mac']`
-
